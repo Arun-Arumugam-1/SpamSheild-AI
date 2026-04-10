@@ -1,5 +1,6 @@
 venv/
-_pycache_/
+__pycache__/
+test_link.py
 *.pyc
 *.pyo
 *.pyd
