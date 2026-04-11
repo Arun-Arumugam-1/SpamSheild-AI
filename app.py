@@ -66,25 +66,22 @@ st.markdown("---")
 st.markdown("⚡ Built with Machine Learning , NLP & OCR | Hackathon Project")
 # ---------------- IMAGE SECTION ----------------
 st.markdown("## 🖼 Screenshot Spam Detection")
-
+st.markdown("upload a screenshot to detect spam indicators using OCR")
 uploaded_file = st.file_uploader("Upload screenshot", type=["png", "jpg", "jpeg"])
 
-if uploaded_file is not None:
-    from PIL import Image
-    from image_detector import analyze_image
-
-    image = Image.open(uploaded_file)
-    st.image(image, caption="Uploaded Image", use_column_width=True)
-
-    if st.button("🧠 Analyze Screenshot"):
-        text, prediction, prob = analyze_image(image)
-
-        st.markdown("### 📄 Extracted Text")
-        st.write(text)
-
-        confidence = prob[1] * 100 if prediction == 1 else prob[0] * 100
-
-        if prediction == 1:
-            st.error(f"🚨 Spam Detected ({confidence:.2f}%)")
-        else:
-            st.success(f"✅ Safe ({confidence:.2f}%)")
+image = Image.open(uploaded_file)
+    st.image(image, caption="Uploaded Image")
+    
+    st.info("🔍 Analyzing screenshot...")
+    
+    text, prediction, prob = analyze_image(image)
+    
+    st.markdown("### 📄 Extracted Text:")
+    st.text_area("Text from screenshot:", text, height=150, disabled=True)
+    
+    st.markdown("### 🎯 Detection Result:")
+    
+    if prediction == 1:
+        st.error(f"⚠️ *SPAM DETECTED* ({prob:.1f}% confidence)")
+    else:
+        st.success(f"✅ *SAFE* ({prob:.1f}% confidence)")
