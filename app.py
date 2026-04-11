@@ -61,9 +61,7 @@ if st.button("🌐 Check Link"):
     else:
         st.warning(result)
 
-# Footer
-st.markdown("---")
-st.markdown("⚡ Built with Machine Learning , NLP & OCR | Hackathon Project")
+
 # ---------------- IMAGE SECTION ----------------
 st.markdown("## 🖼️ Screenshot Spam Detection")
 st.markdown("Upload a screenshot to detect spam indicators using OCR")
@@ -82,3 +80,9 @@ if uploaded_file is not None:
         st.error(f"⚠️ *SPAM DETECTED* ({prob:.1f}% confidence)")
     else:
         st.success(f"✅ *SAFE* ({prob:.1f}% confidence)")
+
+# Footer
+st.markdown("---")
+st.markdown("⚡ Built with Machine Learning , NLP & OCR | Hackathon Project")
+
+
