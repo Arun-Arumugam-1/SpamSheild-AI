@@ -1,14 +1,9 @@
 import easyocr
 from PIL import Image
 
-# Initialize reader (first time only, then cached)
-@st.cache_resource
-def get_reader():
-    return easyocr.Reader(['en'])
-
 def analyze_image(image):
     try:
-        reader = get_reader()
+        reader = easyocr.Reader(['en'])
         result = reader.readtext(image)
         
         # Extract text from results
