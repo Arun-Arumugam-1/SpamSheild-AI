@@ -1,7 +1,7 @@
 import streamlit as st
 from model import predict_spam
 from link_detector import check_link
-from PLI import Image
+from PIL import Image
 from image_detector import analyze_image
 
 # Page settings
